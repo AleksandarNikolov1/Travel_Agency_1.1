@@ -22,13 +22,10 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
     private final HolidayRepository holidayRepository;
 
-    private final ModelMapper modelMapper;
-
     @Autowired
-    public ReservationService(ReservationRepository reservationRepository, HolidayRepository holidayRepository, ModelMapper modelMapper) {
+    public ReservationService(ReservationRepository reservationRepository, HolidayRepository holidayRepository) {
         this.reservationRepository = reservationRepository;
         this.holidayRepository = holidayRepository;
-        this.modelMapper = modelMapper;
     }
 
     public Optional<Reservation> createReservation(String name, String number, String holidayStr) {

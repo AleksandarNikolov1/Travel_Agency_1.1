@@ -1,18 +1,15 @@
 package com.example.mywebproject.controllers;
 
 import com.example.mywebproject.dtos.locationDtos.CreateLocationDto;
-import com.example.mywebproject.dtos.locationDtos.ResponseLocationDto;
 import com.example.mywebproject.dtos.locationDtos.UpdateLocationDto;
 import com.example.mywebproject.entities.Location;
 import com.example.mywebproject.services.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 @RestController
 @CrossOrigin("*")

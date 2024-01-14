@@ -4,11 +4,13 @@ import com.example.mywebproject.dtos.holidayDtos.CreateHolidayDto;
 import com.example.mywebproject.dtos.holidayDtos.UpdateHolidayDto;
 import com.example.mywebproject.entities.Holiday;
 import com.example.mywebproject.services.HolidayService;
+import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -62,6 +64,17 @@ public class HolidayController {
                 updateHolidayDTO.getPrice(),
                 updateHolidayDTO.getFreeSlots()).get();
         return ResponseEntity.ok().body(holiday);
+    }
+
+    @GetMapping(params = {"location", "startDate", "duration"})
+    public ResponseEntity<List<Holiday>> searchHolidays(
+            @RequestParam(required = false) String location,
+            @RequestParam(required = false) String startDate,
+            @RequestParam(required = false) Integer duration){
+
+        List<Holiday> holidays = this.holidayService.findHolidayByCriteria(location, LocalDate.parse(startDate), duration);
+
+        return ResponseEntity.ok(holidays);
     }
 }
 

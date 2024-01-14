@@ -23,12 +23,10 @@ import java.util.Spliterator;
 public class LocationService {
 
     private final LocationRepository locationRepository;
-    private final ModelMapper modelMapper;
 
     @Autowired
     public LocationService(LocationRepository locationRepository, ModelMapper modelMapper) {
         this.locationRepository = locationRepository;
-        this.modelMapper = modelMapper;
     }
 
     public Location createLocation(String street, String number, String city, String country) {
